@@ -1,0 +1,31 @@
+CREATE TABLE raw_data(
+device_id INT,
+sensor_type VARCHAR,
+factory_id INT,
+section VARCHAR,
+value INT,
+eventtime BIGINT,
+PRIMARY KEY(device_id,eventtime))
+WITH CLUSTERING ORDER BY (eventtime DESC);
+
+CREATE TABLE status (
+    device_id INT,
+    eventtime TIMESTAMP,
+    updated_at TIMESTAMP,
+    sensor_type TEXT,
+    factory_id INT,
+    section TEXT,
+    status TEXT,
+    PRIMARY KEY(device_id)
+)
+
+// Command to submit dataflow job
+python process.py \
+    --region europe-west3 \
+    --runner DataflowRunner \
+    --project gcdeveloper \
+    --temp_location gs://beam-storage-eu-west/tmp/ \
+    --save_main_session True \
+    --requirements_file requirements.txt
+
+
