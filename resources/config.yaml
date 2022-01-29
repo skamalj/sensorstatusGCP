@@ -1,6 +1,6 @@
 records:
   - type: Source
-    count: 100
+    count: 150
     failure_simulation:
       probability: 0.1
       min_source_recs: 25
