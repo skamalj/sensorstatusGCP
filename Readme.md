@@ -1,6 +1,6 @@
 This repo builds following architecture on GCP for identifying failed industrial sensors in real time
 
-![Architecture](resources\SensorGCP.png)
+![Architecture](resources/SensorGCP.png)
 
 ## Deploy
 
