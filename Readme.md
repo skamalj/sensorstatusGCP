@@ -50,4 +50,4 @@ npm start -- -i 5000
 ```
 
 ## Note
->> psycopg2 postgresql library does not work straight away with dataflow, as it need OS level packages to be installed as a dependency. This will need custom ima0ge to work with, hence pg8000 was used which is native python. 
+>> psycopg2 postgresql library does not work straight away with dataflow, as it need OS level packages to be installed as a dependency. This will need custom image to work with, hence pg8000 was used which is native python. 
