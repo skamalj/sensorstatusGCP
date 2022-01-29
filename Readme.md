@@ -1,10 +1,12 @@
-This repo builds following architecture on GCP for identifying failed industrial sensors in real time
+This repo builds following architecture on GCP for identifying failed industrial sensors in real time.
+
+This is described in this [blog](https://www.kamalsblog.com/2022/01/failed-sensor-identification-gcp-dataflow-yugabyte-grafana.html)
 
 ![Architecture](resources/SensorGCP.png)
 
 ## Deploy
 
-* Create YCQL and YSQL tables in Yugabyte cloud instance. Create table script are in `resources/createyb.txt` 
+* Create YCQL and YSQL tables in Yugabyte cloud instance. Create table script are in `resources/createyb.txt`  Create your yugabye cloud accoiunt [here](https://cloud.yugabyte.com/)
 
 * Create DB Secrets in GCP secret Manager. Since credentials are same for YCQL and YSQL, code use same for both connections
 
@@ -42,6 +44,10 @@ python process.py \
 
 * Now start your [generator](https://github.com/skamalj/datagenerator) based on cconfig file provided in resources folder.
 Do remeber to set you project and topic name in .env file.
+* * The config required by this is in "resources/config.yaml". Copy this file to generators "schema" directory as "config.yaml" Then start the generator using below command
+```
+npm start -- -i 5000
+```
 
 ## Note
 >> psycopg2 postgresql library does not work straight away with dataflow, as it need OS level packages to be installed as a dependency. This will need custom ima0ge to work with, hence pg8000 was used which is native python. 
